@@ -1,0 +1,21 @@
+One solution is to avoid using nested percentages within `calc()` that depend on different parent elements. Instead, use absolute units like pixels or ems for a more predictable result.
+
+Another approach is to restructure the CSS to ensure the percentages are relative to the same parent element, thus making the calculation clearer.
+
+```css
+.grandparent {
+  width: 50%;
+}
+
+.parent {
+  width: 50%; /* Using a fixed percentage relative to grandparent */
+  padding: 10px;
+}
+
+.child {
+  width: calc(100% - 20px); /* Now 100% relative to the parent */
+  box-sizing: border-box; /*Consider adding this if padding/border are impacting the width*/
+}
+```
+
+By using absolute units or restructuring the CSS, the calculation becomes more straightforward and avoids ambiguity in resolving percentage values in nested elements.
