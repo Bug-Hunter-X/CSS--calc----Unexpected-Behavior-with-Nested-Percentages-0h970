@@ -1,0 +1,17 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, using it with percentages that reference different elements can lead to unexpected results due to how CSS calculates percentages. For example, if you have nested elements and use percentages that depend on parent and grandparent elements, the calculations might not work as intended, especially in dynamic layouts. 
+
+```css
+.grandparent {
+  width: 50%;
+}
+
+.parent {
+  width: calc(50% + 20px);
+}
+
+.child {
+  width: calc(100% - 10px); /* This will be relative to .parent, not .grandparent */
+}
+```
+
+In this case, the child's width is not correctly calculated against the grandparent's width but rather the parent's.
